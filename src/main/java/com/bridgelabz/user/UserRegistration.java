@@ -21,5 +21,9 @@ public class UserRegistration {
         return number.matches(phoneRegex);
     }
 
+    public static boolean validPassword(String password){
+        String emailRegex = "^\\+?[A-Za-z]{8}$";
+        return password.matches(emailRegex);
+    }
 
 }

@@ -59,4 +59,18 @@ public class UserRegistrationTest {
         Assertions.assertFalse(result);
     }
 
+    @Test
+    public void givenPassword_WhenProperSize_Eight_ShouldReturnTrue() {
+        UserRegistration registration = new UserRegistration();
+        boolean result = registration.validPassword("rojajule");
+        Assertions.assertTrue(result);
+    }
+
+    @Test
+    public void givenPassword_WhenImProperSize_Eight_ShouldReturnFalse() {
+        UserRegistration registration = new UserRegistration();
+        boolean result = registration.validPassword("rojajules");
+        Assertions.assertFalse(result);
+    }
+
 }
