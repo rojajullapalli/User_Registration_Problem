@@ -60,15 +60,15 @@ public class UserRegistrationTest {
     }
 
     @Test
-    public void givenPassword_WhenProperSize_Eight_ShouldReturnTrue() {
+    public void givenPassword_WhenProperSize_Eight_WithOneUpperCase_AndOneNumber_ShouldReturnTrue() {
         UserRegistration registration = new UserRegistration();
-        boolean result = registration.validPassword("Rojajule");
+        boolean result = registration.validPassword("Roja1jule");
         Assertions.assertTrue(result);
     }
     
 
     @Test
-    public void givenPassword_WhenImProperSize_Eight_ShouldReturnFalse() {
+    public void givenPassword_WhenImProperSize_Eight_WithOneUpperCase_AndOneNumber_ShouldReturnFalse() {
         UserRegistration registration = new UserRegistration();
         boolean result = registration.validPassword("rojajules");
         Assertions.assertFalse(result);
