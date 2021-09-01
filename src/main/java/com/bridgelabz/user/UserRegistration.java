@@ -17,13 +17,13 @@ public class UserRegistration {
     }
 
     public static boolean validPhoneNumber(String number){
-        String phoneRegex = "^\\+?([0-9]{2})\\)?[-]?([0-9]{10})$";
+        String phoneRegex = "^\\+?([0-9]{2})\\)?[\\s+]?([0-9]{10})$";
         return number.matches(phoneRegex);
     }
 
     public static boolean validPassword(String password){
-        String emailRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$";
-        return password.matches(emailRegex);
+        String passwordRegex = "^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*();]{1}).{8,12}$";
+        return password.matches(passwordRegex);
     }
 
 }

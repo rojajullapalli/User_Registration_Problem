@@ -48,7 +48,7 @@ public class UserRegistrationTest {
     @Test
     public void givenPhoneNumber_WhenProper_ShouldReturnTrue() {
         UserRegistration registration = new UserRegistration();
-        boolean result = registration.validPhoneNumber("91-9159311833");
+        boolean result = registration.validPhoneNumber("91 9159311833");
         Assertions.assertTrue(result);
     }
 
@@ -60,17 +60,24 @@ public class UserRegistrationTest {
     }
 
     @Test
-    public void givenPassword_WhenProperSize_Eight_WithOneUpperCase_AndOneNumber_ShouldReturnTrue() {
+    public void givenPassword_WhenProperSize_Eight_WithOneUpperCase_AndOneNumber_AndOneSpecialCharacter_ShouldReturnTrue() {
         UserRegistration registration = new UserRegistration();
-        boolean result = registration.validPassword("Roja1jule");
+        boolean result = registration.validPassword("Firtcry2499@");
         Assertions.assertTrue(result);
     }
     
 
     @Test
-    public void givenPassword_WhenImProperSize_Eight_WithOneUpperCase_AndOneNumber_ShouldReturnFalse() {
+    public void givenPassword_WhenImProperSize_Eight_WithOneUpperCase_AndOneNumber_AndOneSpecialCharacter_ShouldReturnFalse() {
         UserRegistration registration = new UserRegistration();
         boolean result = registration.validPassword("rojajules");
+        Assertions.assertFalse(result);
+    }
+
+    @Test
+    public void givenPassword_WhenImProperSize_Eight_WithOneUpperCase_AndOneNumber_AndTwoSpecialCharacter_ShouldReturnFalse() {
+        UserRegistration registration = new UserRegistration();
+        boolean result = registration.validPassword("#Firtcry2499@");
         Assertions.assertFalse(result);
     }
 
