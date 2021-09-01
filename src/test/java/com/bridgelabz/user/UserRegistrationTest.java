@@ -18,5 +18,18 @@ public class UserRegistrationTest {
         Assertions.assertFalse(result);
     }
 
+    @Test
+    public void  givenLastName_WhenProper_ShouldReturnTrue() {
+        UserRegistration registration = new UserRegistration();
+        boolean result = registration.validInputLastName("Julapalli");
+        Assertions.assertTrue(result);
+    }
+    @Test
+    public void givenLirstName_WhenImproper_ShouldReturnFalse() {
+        UserRegistration registration = new UserRegistration();
+        boolean result = registration.validInputLastName("julapalli");
+        Assertions.assertFalse(result);
+    }
+
 
 }

@@ -6,4 +6,9 @@ public class UserRegistration {
         return Fname.matches(USER_NAME);
     }
 
+    public static boolean validInputLastName(String Lname) {
+        String USER_NAME = "^[A-Z]{1}[a-z]{2,}$";
+        return Lname.matches(USER_NAME);
+    }
+
 }
