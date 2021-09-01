@@ -22,7 +22,7 @@ public class UserRegistration {
     }
 
     public static boolean validPassword(String password){
-        String emailRegex = "^\\+?[A-Za-z]{8}$";
+        String emailRegex = "^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z]{8,}$";
         return password.matches(emailRegex);
     }
 
