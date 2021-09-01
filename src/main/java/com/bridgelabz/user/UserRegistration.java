@@ -16,4 +16,10 @@ public class UserRegistration {
         return email.matches(EmailRegex);
     }
 
+    public static boolean validPhoneNumber(String number){
+        String phoneRegex = "^\\+?([0-9]{2})\\)?[-]?([0-9]{10})$";
+        return number.matches(phoneRegex);
+    }
+
+
 }

@@ -44,4 +44,19 @@ public class UserRegistrationTest {
         boolean result = registration.validEmail("abc.in");
         Assertions.assertFalse(result);
     }
+
+    @Test
+    public void givenPhoneNumber_WhenProper_ShouldReturnTrue() {
+        UserRegistration registration = new UserRegistration();
+        boolean result = registration.validPhoneNumber("91-9159311833");
+        Assertions.assertTrue(result);
+    }
+
+    @Test
+    public void givenPhoneNumber_WhenImProperSize_ShouldReturnFalse() {
+        UserRegistration registration = new UserRegistration();
+        boolean result = registration.validPhoneNumber("9191593118");
+        Assertions.assertFalse(result);
+    }
+
 }
