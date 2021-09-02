@@ -69,7 +69,7 @@ public class UserRegistrationTest {
         boolean result7 = registration.validEmail("abc()*@gmail.com");
         boolean result8 = registration.validEmail("abc@%*.com");
         boolean result10 = registration.validEmail("abc.@gmail.com");
-        boolean result11 = registration.validEmail("abc@abc@gmail.com");
+        boolean result11 = registration.validEmail("abc..2002@gmail.com");
         boolean result12 = registration.validEmail("abc@gmail.com.1a");
         Assertions.assertFalse(result);
         Assertions.assertFalse(result1);
@@ -95,14 +95,14 @@ public class UserRegistrationTest {
     @Test
     public void givenPhoneNumber_WhenImProperSize_ShouldReturnFalse() {
         UserRegistration registration = new UserRegistration();
-        boolean result = registration.validPhoneNumber("9191593118");
+        boolean result = registration.validPhoneNumber("91-91593118");
         Assertions.assertFalse(result);
     }
 
     @Test
     public void givenPassword_WhenProperSize_Eight_WithOneUpperCase_AndOneNumber_AndOneSpecialCharacter_ShouldReturnTrue() {
         UserRegistration registration = new UserRegistration();
-        boolean result = registration.validPassword("Firtcry2499@");
+        boolean result = registration.validPassword("Firtcry24@99");
         Assertions.assertTrue(result);
     }
     
@@ -118,7 +118,22 @@ public class UserRegistrationTest {
     public void givenPassword_WhenImProperSize_Eight_WithOneUpperCase_AndOneNumber_AndTwoSpecialCharacter_ShouldReturnFalse() {
         UserRegistration registration = new UserRegistration();
         boolean result = registration.validPassword("#Firtcry2499@");
-        Assertions.assertFalse(result);
+        Assertions.assertFalse (result);
     }
+
+    @Test
+    public void givenMood_isHappy__isEquals_ToHappy(){
+        UserRegistration registration = new UserRegistration();
+        String result=registration.analyzeMood("Happy");
+        Assertions.assertEquals("Happy",result);
+    }
+
+    @Test
+    public void givenMood_isNot_HappyisEquals_ToSad(){
+        UserRegistration registration = new UserRegistration();
+        String result=registration.analyzeMood("sad");
+        Assertions.assertNotEquals("sad",result);
+    }
+
 
 }

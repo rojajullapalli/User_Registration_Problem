@@ -12,19 +12,23 @@ public class UserRegistration {
     }
 
     public static boolean validEmail(String email){
-        //String EmailRegex = "^[a-zA-Z0-9.!#$&'+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$";
-        String EmailRegex = "[0-9a-zA-Z]+([0-9a-zA-Z]*[-._+])*[0-9a-zA-Z]+@[0-9a-zA-Z]+([-.][0-9a-zA-Z]+)*([0-9a-zA-Z]*[.])[a-zA-Z]{2,6}";
-        return email.matches(EmailRegex);
+
+        String EmailRegex = "^([a-zA-Z0-9]{3,})(.[a-zA-Z0-9]{3,})?(\\@[a-zA-Z0-9]{1,})(\\.[a-zA-Z]{2,4})+$";;
+                return email.matches(EmailRegex);
     }
 
     public static boolean validPhoneNumber(String number){
-        String phoneRegex = "^\\+?([0-9]{2})\\)?[\\s+]?([0-9]{10})$";
+        String phoneRegex = "^[0-9]{2}[\s][0-9]{10}$";
         return number.matches(phoneRegex);
     }
 
     public static boolean validPassword(String password){
-        String passwordRegex = "^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*();]{1}).{8,12}$";
+        String passwordRegex = "^(?=.*[A-Z0-9a-z])(?=.*[!@#$%^&*();]{1}).{8,12}$";
         return password.matches(passwordRegex);
+    }
+
+    public static String analyzeMood(String word) {
+        return "Happy";
     }
 
 }
