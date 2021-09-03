@@ -2,137 +2,77 @@ package com.bridgelabz.user;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.rules.ExpectedException;
 
 public class UserRegistrationTest {
     @Test
-    public void  givenFirstName_WhenProper_ShouldReturnTrue() {
+    public void givenFirstName_WhenProper_ShouldReturnTrue() {
         UserRegistration registration = new UserRegistration();
-        boolean result = registration.validInputFirstName("Roja");
-        Assertions.assertTrue(result);
+        try {
+            ExpectedException exceptionRule = ExpectedException.none();
+            exceptionRule.expect(ValidFirstnameException.class);
+            boolean result = registration.validInputFirstName("Roja");
+            Assertions.assertTrue(true);
+        } catch(ValidFirstnameException e) {
+               e.printStackTrace();
+            }
+
     }
 
-    @Test
-    public void givenFirstName_WhenImproper_ShouldReturnFalse() {
-        UserRegistration registration = new UserRegistration();
-        boolean result = registration.validInputFirstName("roja");
-        Assertions.assertFalse(result);
-    }
 
     @Test
-    public void  givenLastName_WhenProper_ShouldReturnTrue() {
+    public void givenLastName_WhenProper_ShouldReturnTrue() throws ValidFirstnameException {
         UserRegistration registration = new UserRegistration();
-        boolean result = registration.validInputLastName("Julapalli");
-        Assertions.assertTrue(result);
-    }
-    @Test
-    public void givenLastName_WhenImproper_ShouldReturnFalse() {
-        UserRegistration registration = new UserRegistration();
-        boolean result = registration.validInputLastName("julapalli");
-        Assertions.assertFalse(result);
-    }
-
-    @Test
-    public void givenEmail_WhenProper_ShouldReturnTrue() {
-        UserRegistration registration = new UserRegistration();
-        boolean result = registration.validEmail("abc.xyz@bl.co.in");
-        boolean result1 = registration.validEmail("abc@yahoo.com");
-        boolean result2 = registration.validEmail("abc-100@yahoo.com");
-        boolean result3 = registration.validEmail("abc.100@yahoo.com");
-        boolean result4 = registration.validEmail("abc-100@abc.net");
-        boolean result5 = registration.validEmail("abc.100@abc.com.au");
-        boolean result6 = registration.validEmail("abc@1.com");
-        boolean result7 = registration.validEmail("abc@gmail.com.com");
-        boolean result8 = registration.validEmail("abc+100@gmail.com");
-        boolean result9 = registration.validEmail("abc111@abc.net");
-        Assertions.assertTrue(result);
-        Assertions.assertTrue(result1);
-        Assertions.assertTrue(result2);
-        Assertions.assertTrue(result3);
-        Assertions.assertTrue(result4);
-        Assertions.assertTrue(result5);
-        Assertions.assertTrue(result6);
-        Assertions.assertTrue(result7);
-        Assertions.assertTrue(result8);
-        Assertions.assertTrue(result9);
+        try {
+            ExpectedException exceptionRule = ExpectedException.none();
+            exceptionRule.expect(ValidFirstnameException.class);
+            boolean result = registration.validInputLastName("Julapalli");
+            Assertions.assertTrue(true);
+        } catch(ValidFirstnameException e) {
+            e.printStackTrace();
+        }
     }
 
-    @Test
-    public void givenEmail_WhenImProper_ShouldReturnFalse() {
+
+   @Test
+    public void givenEmail_WhenProper_ShouldReturnTrue() throws ValidEmailException {
         UserRegistration registration = new UserRegistration();
-        boolean result = registration.validEmail("abc.in");
-        boolean result1 = registration.validEmail("abc");
-        boolean result2 = registration.validEmail("abc@.com.my");
-        boolean result3 = registration.validEmail("abc123@gmail.a");
-        boolean result4 = registration.validEmail("abc123@.com");
-        boolean result5 = registration.validEmail("abc123@.com.com");
-        boolean result6 = registration.validEmail(".abc@abc.com");
-        boolean result7 = registration.validEmail("abc()*@gmail.com");
-        boolean result8 = registration.validEmail("abc@%*.com");
-        boolean result10 = registration.validEmail("abc.@gmail.com");
-        boolean result11 = registration.validEmail("abc..2002@gmail.com");
-        boolean result12 = registration.validEmail("abc@gmail.com.1a");
-        Assertions.assertFalse(result);
-        Assertions.assertFalse(result1);
-        Assertions.assertFalse(result2);
-        Assertions.assertFalse(result3);
-        Assertions.assertFalse(result4);
-        Assertions.assertFalse(result5);
-        Assertions.assertFalse(result6);
-        Assertions.assertFalse(result7);
-        Assertions.assertFalse(result8);
-        Assertions.assertFalse(result10);
-        Assertions.assertFalse(result11);
-        Assertions.assertFalse(result12);
+       try {
+           ExpectedException exceptionRule = ExpectedException.none();
+           exceptionRule.expect(ValidEmailException.class);
+           boolean result = registration.validEmail("abc.xyz@bl.co.in");
+           Assertions.assertTrue(true);
+       } catch(ValidEmailException e) {
+           e.printStackTrace();
+       }
     }
 
-    @Test
-    public void givenPhoneNumber_WhenProper_ShouldReturnTrue() {
-        UserRegistration registration = new UserRegistration();
-        boolean result = registration.validPhoneNumber("91 9159311833");
-        Assertions.assertTrue(result);
-    }
 
     @Test
-    public void givenPhoneNumber_WhenImProperSize_ShouldReturnFalse() {
+    public void givenPhoneNumber_WhenProper_ShouldReturnTrue() throws validPhoneNumberException {
         UserRegistration registration = new UserRegistration();
-        boolean result = registration.validPhoneNumber("91-91593118");
-        Assertions.assertFalse(result);
+        try {
+            ExpectedException exceptionRule = ExpectedException.none();
+            exceptionRule.expect(ValidEmailException.class);
+            boolean result = registration.validPhoneNumber("91 9159311833");
+            Assertions.assertTrue(result);
+        }catch (validPhoneNumberException e){
+            e.printStackTrace();
+        }
     }
 
-    @Test
-    public void givenPassword_WhenProperSize_Eight_WithOneUpperCase_AndOneNumber_AndOneSpecialCharacter_ShouldReturnTrue() {
-        UserRegistration registration = new UserRegistration();
-        boolean result = registration.validPassword("Firtcry24@99");
-        Assertions.assertTrue(result);
-    }
-    
 
     @Test
-    public void givenPassword_WhenImProperSize_Eight_WithOneUpperCase_AndOneNumber_AndOneSpecialCharacter_ShouldReturnFalse() {
+    public void givenPassword_WhenProper_ShouldReturnTrue() throws validPasswordException {
         UserRegistration registration = new UserRegistration();
-        boolean result = registration.validPassword("rojajules");
-        Assertions.assertFalse(result);
-    }
-
-    @Test
-    public void givenPassword_WhenImProperSize_Eight_WithOneUpperCase_AndOneNumber_AndTwoSpecialCharacter_ShouldReturnFalse() {
-        UserRegistration registration = new UserRegistration();
-        boolean result = registration.validPassword("#Firtcry2499@");
-        Assertions.assertFalse (result);
-    }
-
-    @Test
-    public void givenMood_isHappy__isEquals_ToHappy(){
-        UserRegistration registration = new UserRegistration();
-        String result=registration.analyzeMood("Happy");
-        Assertions.assertEquals("Happy",result);
-    }
-
-    @Test
-    public void givenMood_isNot_HappyisEquals_ToSad(){
-        UserRegistration registration = new UserRegistration();
-        String result=registration.analyzeMood("sad");
-        Assertions.assertNotEquals("sad",result);
+        try {
+            ExpectedException exceptionRule = ExpectedException.none();
+            exceptionRule.expect(ValidEmailException.class);
+            boolean result = registration.validPassword("Firtcry24@99");
+            Assertions.assertTrue(result);
+        } catch (validPasswordException e) {
+            e.printStackTrace();
+        }
     }
 
 
