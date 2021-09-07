@@ -1,5 +1,6 @@
 package com.bridgelabz.user;
 
+
 public class UserRegistration{
     public boolean validInputFirstName(String fName) throws ValidException {
         String userName = "^[A-Z]{1}[a-z]{2,}$";
